@@ -119,9 +119,9 @@ module ActiveMerchant #:nodoc:
           uri = identifier.
             split("|").
             detect{|uri| uri.size > 0}
-          uri.split("/")[2]
+          uri.split("/").last
         when %r{\/}
-          identifier.split("/")[5]
+          identifier.split("/").last
         else
           identifier
         end
@@ -130,7 +130,7 @@ module ActiveMerchant #:nodoc:
       def card_identifier_from(identifier)
         case identifier
         when %r{\/}
-          identifier.split("/")[2]
+          identifier.split("/").last
         else
           identifier
         end
